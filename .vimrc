@@ -77,7 +77,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set wildignore+=node_modules,target,*.class,build
+set wildignore+=node_modules,target,*.class,build,__pycache__
 
 " Shortcuts
 let mapleader=","
