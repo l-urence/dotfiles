@@ -12,33 +12,35 @@ if [[ -f ~/.bash_aliases ]]; then
   source ~/.bash_aliases;
 fi;
 
+# Setup homebrew
+export HOMEBREW_HOME=$(([ `uname` = "Linux" ] && echo "/home/linuxbrew/.linuxbrew") || echo '/usr/local');
+export PATH="$HOMEBREW_HOME/bin:$PATH";
+export PATH="$HOMEBREW_HOME/sbin:$PATH";
+
 # Set defualt editor.
 export EDITOR="vim -f";
 export GIT_EDITOR="vim -f";
 
 # Activate nvm.
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+export NVM_DIR="$HOME/.nvm";
+. "$HOMEBREW_HOME/opt/nvm/nvm.sh"
 
-# Build maven subprojects and docker images.
-function ms() {
-  mvn clean package -am -pl `echo $@ | tr ' ' ','` docker:build -DskipTests;
-}
+# Add RVM to PATH for scripting. Make sure this is the
+# last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin";
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm";
 
-# Get the name of a pod by its app lable.
-function get_pod_name() {
-  kubectl get pod -l "short=$1" -o jsonpath='{.items[].metadata.name}';
-}
+# Setup Java
+export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+export PATH="$JAVA_HOME/bin:$PATH"
 
-# Print logs from kubernetes.
-function kl() {
-  kubectl logs -f `get_pod_name $1` $2;
-}
+# Setup Android
+export ANDROID_HOME=/home/linuxbrew/.linuxbrew/opt/android-sdk
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/emulator:$PATH"
 
-# Port forwards kubernetes container.
-function kpf() {
-  kubectl port-forward `get_pod_name $1` $2;
-}
+# Setup virtualenv wrapper
+export WORKON_HOME=$HOME/.virtualenvs
+source $HOMEBREW_HOME/bin/virtualenvwrapper.sh
 
 # Open tmux from config file.
 function t() {

@@ -46,3 +46,9 @@ alias dl='docker logs -f';
   alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder";
   alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder";
 };
+
+[[ `uname` == "Linux" ]] && {
+  alias open="xdg-open";
+  alias paste="xclip -o -selection clipboard";
+  alias copy="xclip -selection clipboard";
+};

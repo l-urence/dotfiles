@@ -9,13 +9,14 @@ call vundle#begin()
 
 Plugin 'The-NERD-Commenter'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'chriskempson/base16-vim'
+Plugin 'ajh17/Spacegray.vim'
 Plugin 'fugitive.vim' " Interace with Git
 Plugin 'gabrielelana/vim-markdown'
 Plugin 'gmarik/vundle'
 Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'mattn/emmet-vim' " Do things like html:5 C-Y + leader
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rking/ag.vim'
@@ -44,10 +45,10 @@ set cursorline
 set relativenumber
 
 " Colors
-syntax enable
-set background=dark
-colorscheme base16-tomorrow
-let base16colorspace=256
+syntax off
+set t_Co=256
+colorscheme spacegray
+highlight Normal  ctermbg=none
 
 set mouse=a
 if has("mouse_sgr")
@@ -64,11 +65,6 @@ endif
 " Copy / Paste to OSX clipboard
 set clipboard=unnamed
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
 " Autoremovens_modified trailing whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -82,10 +78,7 @@ set wildignore+=node_modules,target,*.class,build,__pycache__
 " Shortcuts
 let mapleader=","
 map <leader>d :bd<CR>
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+
 " Quicksave command
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>
@@ -120,8 +113,8 @@ map <C-c> :NERDTreeTabsToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme='base16'
+"let g:airline_powerline_fonts = 1
+let g:airline_theme='luna'
 
 " ale
 let g:ale_python_pylint_options = '--disable=C0111,E0401,C0411,C0330,E1101,R0201'

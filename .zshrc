@@ -4,6 +4,8 @@
 # time that oh-my-zsh is loaded.
 ZSH_THEME="simple"
 
+source ~/.bashrc;
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -51,25 +53,11 @@ export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-DEFAULT_USER="lbo"
-PROMPT='%{$fg[green]%}%c%{$fg_bold[blue]%}$(git_prompt_info)%{$reset_color%} :> ';
-
-# stty -ixon
-source ~/.bashrc;
-export LC_ALL="en_US.UTF-8"
-
-# Add go
-export GOPATH=/Users/lb/Library/golang/
-export PATH=$PATH:$GOPATH/bin
+# Note use a non-breaking space at the end of the prompt because we can use it as
+# a find pattern to jump back in tmux.
+local NBSP=' '
+export PS1="%F{green}${SSH_TTY:+%n@%m}%f%B${SSH_TTY:+:}%b%F{blue}%1~%F{white}%(1j.*.)%(!.#. :>)%b%f%F{red}%B${SUFFIX}%b%f${NBSP}"
+export ZLE_RPROMPT_INDENT=0
 
 # Fix crtl-s in vim.
 stty start undef stop undef
-
-# Base16 theme.
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# Python virualenvwrapper.
-export WORKON_HOME=~/.python_envs
-[ -d $WORKON_HOME ] || mkdir -p $WORKING_HOME;
-source /usr/local/bin/virtualenvwrapper.sh;
