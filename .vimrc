@@ -33,7 +33,7 @@ set guifont=Sauce\ Code\ Powerline:h11
 set bs=2
 set ts=2
 set sw=2
-set nowrap
+set wrap
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -44,11 +44,24 @@ set colorcolumn=80
 set cursorline
 set relativenumber
 
+set list                              " show whitespace
+set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
+set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
+                                      " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
+set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
+set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
+set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
+set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
+
+if has('linebreak')
+  let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
+endif
+
 " Colors
 syntax off
 set t_Co=256
 colorscheme spacegray
-highlight Normal  ctermbg=none
+highlight Normal ctermbg=none
 
 set mouse=a
 if has("mouse_sgr")
