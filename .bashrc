@@ -12,6 +12,11 @@ if [[ -f ~/.bash_aliases ]]; then
   source ~/.bash_aliases;
 fi;
 
+# Source local configurations.
+if [[ -f ~/.bash_local ]]; then
+  source ~/.bash_local;
+fi;
+
 # Setup homebrew
 export HOMEBREW_HOME=$(([ `uname` = "Linux" ] && echo "/home/linuxbrew/.linuxbrew") || echo '/usr/local');
 export PATH="$HOMEBREW_HOME/bin:$PATH";
