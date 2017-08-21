@@ -4,8 +4,6 @@
 # time that oh-my-zsh is loaded.
 ZSH_THEME="simple"
 
-source ~/.bashrc;
-
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -61,3 +59,6 @@ export ZLE_RPROMPT_INDENT=0
 
 # Fix crtl-s in vim.
 stty start undef stop undef
+
+source ~/.bashrc;
+
