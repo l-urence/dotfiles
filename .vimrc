@@ -21,6 +21,7 @@ Plugin 'mattn/emmet-vim' " Do things like html:5 C-Y + leader
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-eunuch' " Rename, Delete, Move
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
