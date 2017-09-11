@@ -8,6 +8,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'The-NERD-Commenter'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ajh17/Spacegray.vim'
 Plugin 'fugitive.vim' " Interace with Git
@@ -63,6 +64,9 @@ syntax off
 set t_Co=256
 colorscheme spacegray
 highlight Normal ctermbg=none
+highlight Pmenu guibg=brown gui=bold
+highlight Pmenu ctermfg=255 ctermbg=238
+highlight PmenuSel ctermfg=255 ctermbg=236
 
 set mouse=a
 if has("mouse_sgr")
@@ -132,3 +136,6 @@ let g:airline_theme='luna'
 
 " ale
 let g:ale_python_pylint_options = '--disable=C0111,E0401,C0411,C0330,E1101,R0201'
+
+" YCM
+let g:ycm_filetype_blacklist = { 'vim': 1 }
