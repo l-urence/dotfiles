@@ -26,10 +26,6 @@ export PATH="$HOMEBREW_HOME/sbin:$PATH";
 export EDITOR="vim -f";
 export GIT_EDITOR="vim -f";
 
-# Activate nvm.
-export NVM_DIR="$HOME/.nvm";
-. "$HOMEBREW_HOME/opt/nvm/nvm.sh"
-
 # Add RVM to PATH for scripting. Make sure this is the
 # last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin";
