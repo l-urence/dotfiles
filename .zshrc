@@ -1,3 +1,5 @@
+source ~/.bashrc;
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -59,6 +61,4 @@ export ZLE_RPROMPT_INDENT=0
 
 # Fix crtl-s in vim.
 stty start undef stop undef
-
-source ~/.bashrc;
 
