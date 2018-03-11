@@ -32,7 +32,7 @@ export PATH="$PATH:$HOME/.rvm/bin";
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm";
 
 # Setup Java
-export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+export JAVA_HOME="/usr/lib/jvm/default"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 # Setup Android
