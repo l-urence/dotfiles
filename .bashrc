@@ -43,6 +43,13 @@ export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/
 export WORKON_HOME=$HOME/.virtualenvs
 source $HOMEBREW_HOME/bin/virtualenvwrapper.sh
 
+NVM_BIN="$HOMEBREW_HOME/opt/nvm/nvm.sh"
+if [ -f $NVM_BIN  ]; then
+  export NVM_DIR="$HOME/.nvm"
+  . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
+fi
+
+
 # Open tmux from config file.
 function t() {
   local file="./.tmux";
