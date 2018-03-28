@@ -2,8 +2,8 @@
 alias ls='ls -Gh';
 alias ll='ls -l';
 alias l='ll -a';
-alias shutdown='sudo shutdown';
-alias reboot='sudo reboot';
+# alias shutdown='sudo shutdown';
+# alias reboot='sudo reboot';
 alias http='python -m SimpleHTTPServer 3000';
 
 # Tmux

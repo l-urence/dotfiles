@@ -1,0 +1,13 @@
+# Setup Java
+export JAVA_HOME="/usr/lib/jvm/default"
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# Setup virtualenv wrapper
+export WORKON_HOME=$HOME/.virtualenvs
+
+# Setup nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Setup linuxbrew
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
