@@ -11,3 +11,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Setup linuxbrew
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+# Setup fasd
+eval "$(fasd --init posix-alias zsh-hook)"
