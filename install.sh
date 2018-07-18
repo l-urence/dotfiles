@@ -28,3 +28,6 @@ ls -a $D | egrep $REGEX | xargs -I {} sh -c "[[ -L ~/{} ]] || ln -s $D/{} ~/{} &
 # Install other stuff;
 install fasd
 install spotify
+install gcloud
+install kubectl-bin
+install ntp
