@@ -51,4 +51,5 @@ alias dl='docker logs -f';
   alias open="xdg-open";
   alias paste="xclip -o -selection clipboard";
   alias copy="xclip -selection clipboard";
+  alias freeram="sudo sh -c 'free -h && sync && echo 3 > /proc/sys/vm/drop_caches && free -h'";
 };
