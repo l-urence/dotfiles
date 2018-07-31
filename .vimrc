@@ -140,10 +140,10 @@ let g:ale_python_pylint_options = '--disable=C0111,E0401,C0411,C0330,E1101,R0201
 " YCM
 let g:ycm_filetype_blacklist = { 'vim': 1 }
 
-
-augroup ProjectSetup
-  au BufRead,BufEnter /home/larry/code/conrad/ccp-junior/* set tabstop=4 shiftwidth=4 softtabstop=4
-augroup END
+" Add project specific configurations.
+" augroup ProjectSetup
+"   au BufRead,BufEnter /home/larry/code/conrad/ccp-junior/* set tabstop=4 shiftwidth=4 softtabstop=4
+" augroup END
 
 let g:CommandTFileScanner = 'find'
 set wildignore+=*/node_modules/*,*/target/*,*.class,build,__pycache__
