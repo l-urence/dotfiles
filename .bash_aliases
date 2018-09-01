@@ -6,6 +6,7 @@ alias pass='gopass';
 # alias shutdown='sudo shutdown';
 # alias reboot='sudo reboot';
 alias http='python -m SimpleHTTPServer 3000';
+alias cat='bat';
 
 # Tmux
 alias ta='tmux attach-session -t';
