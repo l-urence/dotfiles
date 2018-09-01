@@ -150,3 +150,6 @@ let g:ycm_filetype_blacklist = { 'vim': 1 }
 
 let g:CommandTFileScanner = 'find'
 set wildignore+=*/node_modules/*,*/target/*,*.class,build,__pycache__
+
+" commant-t
+let g:CommandTFileScanner = 'find'
