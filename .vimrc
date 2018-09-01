@@ -69,6 +69,7 @@ highlight Normal ctermbg=none
 highlight Pmenu guibg=brown gui=bold
 highlight Pmenu ctermfg=255 ctermbg=238
 highlight PmenuSel ctermfg=255 ctermbg=236
+highlight Visual cterm=reverse ctermbg=NONE
 
 set mouse=a
 if has("mouse_sgr")
