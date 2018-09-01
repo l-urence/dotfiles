@@ -8,6 +8,7 @@ alias pass='gopass';
 alias http='python -m SimpleHTTPServer 3000';
 alias cat='bat';
 alias ping='prettyping --nolegend';
+alias preview="fzf --preview 'bat --color \"always\" {}'";
 
 # Tmux
 alias ta='tmux attach-session -t';
