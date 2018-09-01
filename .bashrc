@@ -26,7 +26,7 @@ if [ `uname` = "Linux" ]; then
   BASH_LINUX="$HOME/.bash_linux"
   [ -f $BASH_LINUX ] && source $BASH_LINUX
 elif [ `uname` = 'Darwin' ]; then
-  $BASH_DARWIN="$HOME/.bash_darwin"
+  BASH_DARWIN="$HOME/.bash_darwin"
   [ -f $BASH_DARWIN ] && source $BASH_DARWIN
 fi
 
@@ -50,3 +50,10 @@ function t() {
     tmux $@
   fi
 }
+
+# Setup fasd
+eval "$(fasd --init posix-alias zsh-hook)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
