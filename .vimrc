@@ -28,6 +28,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
 Plugin 'wincent/command-t'
 Plugin 'prettier/vim-prettier'
+Plugin 'tpope/vim-sleuth' " Auto detect indents
 
 call vundle#end()
 filetype plugin indent on  " required!
