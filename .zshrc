@@ -61,3 +61,5 @@ export ZLE_RPROMPT_INDENT=0
 
 # Fix crtl-s in vim.
 stty start undef stop undef
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
