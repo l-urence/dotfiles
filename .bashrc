@@ -30,16 +30,12 @@ elif [ `uname` = 'Darwin' ]; then
   [ -f $BASH_DARWIN ] && source $BASH_DARWIN
 fi
 
-
-which brew &> /dev/null && {
-  BREW_HOME="$(brew --prefix)"
-
-  # Setup virtualenvwrapper
-  export WORKON_HOME="$HOME/.virtualenvs/"
-  VIRTUALENV_WRAPPER="$BREW_HOME/bin/virtualenvwrapper.sh"
-  VIRTUALENVWRAPPER_PYTHON="$BREW_HOME/bin/python3"
-  [ -f "$VIRTUALENV_WRAPPER" ] && . $VIRTUALENV_WRAPPER
-}
+VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
+if [ -f  $VIRTUALENVWRAPPER ]; then
+  export WORKON_HOME=$HOME/.virtualenvs
+  export PROJECT_HOME=$HOME/Devel
+  . $VIRTUALENVWRAPPER
+fi
 
 # Open tmux from config file.
 function t() {
@@ -51,13 +47,22 @@ function t() {
   fi
 }
 
+# Git - Checkout brach with branch name
+function cob() {
+  co $(g branch | grep -m 1 $1)
+}
+
 # Setup fasd.
 eval "$(fasd --init posix-alias zsh-hook)"
 
 # Setup nvm.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+NVM_BIN=$(brew --prefix nvm)/nvm.sh
+if [ -f $NVM_BIN ]; then
+  export NVM_DIR="$HOME/.nvm"
+  . $NVM_BIN
+fi
+
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # set up fzf.
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
