@@ -1,155 +1,45 @@
-autocmd! bufwritepost .vimrc source %
+" Plugins
+call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}   " Autocompletion
+Plug 'prettier/vim-prettier'                      " Prettify code
+Plug 'wincent/command-t'                          " Fuzzy finder
+Plug 'easymotion/vim-easymotion'                  " Move fast in vim
+Plug 'tpope/vim-fugitive'                         " Git stuff like blame, etc.
+Plug 'vim-airline/vim-airline'                    " Neat statusline
+Plug 'Yavor-Ivanov/airline-monokai-subtle.vim'    " Mono airline theme
+call plug#end()
 
-set laststatus=2
-set nocompatible   " be iMproved
-filetype off       " required!
+" Editor config
+set number                                        " Show line numbers
+set cursorline                                    " Show current line
+autocmd BufWritePre * %s/\s\+$//e                 " Remove trainling space on save (:w)
+set noswapfile                                    " Disable swap file
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Mappings
+let mapleader=","                                 " Remap leader to ','
 
-Plugin 'The-NERD-Commenter'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'ajh17/Spacegray.vim'
-Plugin 'fugitive.vim' " Interace with Git
-Plugin 'gabrielelana/vim-markdown'
-Plugin 'gmarik/vundle'
-Plugin 'honza/vim-snippets'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mattn/emmet-vim' " Do things like html:5 C-Y + leader
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-eunuch' " Rename, Delete, Move
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'w0rp/ale'
-Plugin 'wincent/command-t'
-Plugin 'prettier/vim-prettier'
-Plugin 'tpope/vim-sleuth' " Auto detect indents
-
-call vundle#end()
-filetype plugin indent on  " required!
-
-set guifont=Sauce\ Code\ Powerline:h11
-set bs=2
-set ts=2
-set sw=2
-set wrap
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set shiftwidth=2
-set tabstop=2
-set number
-set colorcolumn=80
-set cursorline
-set relativenumber
-
-set list                              " show whitespace
-set listchars=nbsp:⦸                  " CIRCLED REVERSE SOLIDUS (U+29B8, UTF-8: E2 A6 B8)
-set listchars+=tab:▷┅                 " WHITE RIGHT-POINTING TRIANGLE (U+25B7, UTF-8: E2 96 B7)
-                                      " + BOX DRAWINGS HEAVY TRIPLE DASH HORIZONTAL (U+2505, UTF-8: E2 94 85)
-set listchars+=extends:»              " RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00BB, UTF-8: C2 BB)
-set listchars+=precedes:«             " LEFT-POINTING DOUBLE ANGLE QUOTATION MARK (U+00AB, UTF-8: C2 AB)
-set listchars+=trail:•                " BULLET (U+2022, UTF-8: E2 80 A2)
-set nojoinspaces                      " don't autoinsert two spaces after '.', '?', '!' for join command
-
-if has('linebreak')
-  let &showbreak='↳ '                 " DOWNWARDS ARROW WITH TIP RIGHTWARDS (U+21B3, UTF-8: E2 86 B3)
-endif
+" Indention
+filetype plugin indent on
+set tabstop=2 		                                " show existing tab with 2 spaces width
+set shiftwidth=2 	                                " when indenting with '>', use 2 spaces width
+set expandtab                                     " On pressing tab, insert 2 spaces
 
 " Colors
 syntax off
-set t_Co=256
-colorscheme spacegray
-highlight Normal ctermbg=none
-highlight Pmenu guibg=brown gui=bold
-highlight Pmenu ctermfg=255 ctermbg=238
-highlight PmenuSel ctermfg=255 ctermbg=236
-highlight Visual cterm=reverse ctermbg=NONE
-
-set mouse=a
-if has("mouse_sgr")
-    set ttymouse=sgr
-else
-    set ttymouse=xterm2
-end
-
-if &term =~ '^screen'
-  " tmux knows the extended mouse mode
-  set ttymouse=xterm2
-endif
-
-" Copy / Paste to OSX clipboard
-set clipboard=unnamed
-
-" Autoremovens_modified trailing whitespaces
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Disable swap files
-set nobackup
-set nowritebackup
-set noswapfile
-
-
-" Shortcuts
-let mapleader=","
-map <leader>d :bd<CR>
-
-" Quicksave command
-noremap <C-Z> :update<CR>
-vnoremap <C-Z> <C-C>:update<CR>
-inoremap <C-Z> <C-C>:update<CR>
-
-" Better navigating through omnicomplete option list
-" See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-set completeopt=longest,menuone
-function! OmniPopup(action)
-  if pumvisible()
-    if a:action == 'j'
-      return "\<C-N>"
-    elseif a:action == 'k'
-      return "\<C-P>"
-    endif
-  endif
-  return a:action
-endfunction
-
-" Snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-x>"
-let g:UltiSnipsJumpBackwardTrigger="<c-x>"
-
-" Emmit
-let g:user_emmet_leader_key='<C-Y>'
-
-" NERDTree
-map <C-c> :NERDTreeTabsToggle<CR>
-map <leader>f :NERDTreeFind<CR>
-
-"How can I close vim if the only window left open is a NERDTree?
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+hi Normal ctermbg=none ctermfg=255                " No background color, white text
+hi Pmenu guibg=brown
+hi Pmenu ctermfg=255 ctermbg=238
+hi PmenuSel ctermfg=255 ctermbg=236
+hi LineNr ctermfg=white
+hi Cursor ctermfg=white ctermbg=233
+hi CursorLineNr cterm=bold ctermfg=255
+hi CursorLine cterm=bold ctermbg=236
 
 " airline
-"let g:airline_powerline_fonts = 1
-let g:airline_theme='luna'
+let g:airline_theme='monokai_subtle'
 
-" ale
-let g:ale_python_pylint_options = '--disable=C0111,E0401,C0411,C0330,E1101,R0201'
+" Command-t
+set wildignore+=node_modules
 
-" YCM
-let g:ycm_filetype_blacklist = { 'vim': 1 }
-
-" Add project specific configurations.
-" augroup ProjectSetup
-"   au BufRead,BufEnter /home/larry/code/conrad/ccp-junior/* set tabstop=4 shiftwidth=4 softtabstop=4
-" augroup END
-
-let g:CommandTFileScanner = 'find'
-set wildignore+=*/node_modules/*,*/target/*,*.class,build,__pycache__
-
-" commant-t
-let g:CommandTFileScanner = 'find'
+" Coc
+hi CocHintSign ctermfg=White
