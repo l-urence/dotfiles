@@ -3,8 +3,6 @@ alias ls='ls -Gh';
 alias ll='ls -l';
 alias l='ll -a';
 alias pass='gopass';
-# alias shutdown='sudo shutdown';
-# alias reboot='sudo reboot';
 alias http='python -m SimpleHTTPServer 3000';
 alias cat='bat';
 alias ping='prettyping --nolegend';
@@ -20,11 +18,7 @@ alias activate='. ./.venv/bin/activate';
 alias runserver='./manage.py runserver';
 
 # Git
-alias status='git status';
-alias push='git push';
-alias pull='git pull';
-alias cm='git commit';
-alias co='git checkout'
+alias ggpushf='git push origin :"$(git_current_branch)" && ggpush'
 
 # K8s
 alias ku='kubectl';
