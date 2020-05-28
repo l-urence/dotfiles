@@ -6,7 +6,7 @@ Plug 'wincent/command-t'                          " Fuzzy finder
 Plug 'easymotion/vim-easymotion'                  " Move fast in vim
 Plug 'tpope/vim-fugitive'                         " Git stuff like blame, etc.
 Plug 'vim-airline/vim-airline'                    " Neat statusline
-Plug 'Yavor-Ivanov/airline-monokai-subtle.vim'    " Mono airline theme
+Plug 'sonph/onehalf', {'rtp': 'vim/'}                  " Vim airline theme
 call plug#end()
 
 " Editor config
@@ -36,7 +36,7 @@ hi CursorLineNr cterm=bold ctermfg=255
 hi CursorLine cterm=bold ctermbg=236
 
 " airline
-let g:airline_theme='monokai_subtle'
+let g:airline_theme='onehalfdark'
 
 " Command-t
 set wildignore+=node_modules
