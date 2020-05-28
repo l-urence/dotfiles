@@ -55,14 +55,5 @@ function cob() {
 # Setup fasd.
 eval "$(fasd --init posix-alias zsh-hook)"
 
-# Setup nvm.
-NVM_BIN=$(brew --prefix nvm)/nvm.sh
-if [ -f $NVM_BIN ]; then
-  export NVM_DIR="$HOME/.nvm"
-  . $NVM_BIN
-fi
-
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # set up fzf.
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
