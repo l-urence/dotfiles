@@ -49,7 +49,7 @@ function t() {
 
 # Git - Checkout brach with branch name
 function cob() {
-  co $(g branch | grep -m 1 $1)
+  git checkout $(g branch | grep -m 1 $1)
 }
 
 # Setup fasd.
