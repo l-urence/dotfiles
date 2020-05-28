@@ -1,24 +1,22 @@
-#!/bin/sh
-.bash_aliases
-.bash_linux
-.bash_profile
-.bashrc
-.fzf.zsh
-.git
-.gitignore
-.tmux.conf
-.vimrc
-.zshrc
+#!/bin/sh -e
 
 D=`cd $(dirname $0) && pwd`
-REGEX_NO_GIT='^\.[^g]\w+'
+DOT_FILES=$(ls -a | grep -E '^\.{1}[^g]\w+')
 
 # Remove all link .dot files;
 if [[ "$1" = "--uninstall" ]]; then
-  ls -a $D | egrep $REGEX_NO_GIT | xargs -I {} sh -c '[[ -L ~/{} ]] && rm ~/{} && echo unlink ~/{}'
+  for file in $DOT_FILES; do
+    target=$HOME/$file
+    [[ -L $target ]] && rm $target && echo "delete $target"
+  done;
+
   exit 0
 fi
 
 # Install all .dot files from this directory
-ls -a $D | egrep $REGEX | xargs -I {} sh -c "[[ -L ~/{} ]] || ln -s $D/{} ~/{} && echo link ~/{}"
+for file in $DOT_FILES; do
+  source=$D/$file
+  target=$HOME/$file
+  [[ -L $target ]] || ln -s $source $target && echo "linkl $target"
+done;
 
