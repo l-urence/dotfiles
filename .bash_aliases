@@ -18,7 +18,7 @@ alias activate='. ./.venv/bin/activate';
 alias runserver='./manage.py runserver';
 
 # Git
-alias ggpushf='git push origin :"$(git_current_branch)" && ggpush'
+alias ggpushf='git push --no-verify origin :"$(git_current_branch)" && ggpush'
 
 # K8s
 alias ku='kubectl';

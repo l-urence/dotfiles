@@ -6,13 +6,14 @@ Plug 'wincent/command-t'                          " Fuzzy finder
 Plug 'easymotion/vim-easymotion'                  " Move fast in vim
 Plug 'tpope/vim-fugitive'                         " Git stuff like blame, etc.
 Plug 'vim-airline/vim-airline'                    " Neat statusline
-Plug 'sonph/onehalf', {'rtp': 'vim/'}                  " Vim airline theme
+Plug 'sonph/onehalf', {'rtp': 'vim/'}             " Vim airline theme
 call plug#end()
 
 " Editor config
 set number                                        " Show line numbers
 set cursorline                                    " Show current line
 autocmd BufWritePre * %s/\s\+$//e                 " Remove trainling space on save (:w)
+autocmd FileType gitcommit setlocal spell         " Enable spell for git commits
 set noswapfile                                    " Disable swap file
 
 " Mappings
@@ -43,3 +44,4 @@ set wildignore+=node_modules
 
 " Coc
 hi CocHintSign ctermfg=White
+let g:airline#extensions#coc#enabled = 1

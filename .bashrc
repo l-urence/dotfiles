@@ -31,6 +31,7 @@ elif [ `uname` = 'Darwin' ]; then
 fi
 
 VIRTUALENVWRAPPER=/usr/local/bin/virtualenvwrapper.sh
+VIRTUALENVWRAPPER_PYTHON=$(which python3)
 if [ -f  $VIRTUALENVWRAPPER ]; then
   export WORKON_HOME=$HOME/.virtualenvs
   export PROJECT_HOME=$HOME/Devel
@@ -57,3 +58,7 @@ eval "$(fasd --init posix-alias zsh-hook)"
 
 # set up fzf.
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

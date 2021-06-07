@@ -59,8 +59,7 @@ local NBSP=' '
 export PS1="%F{white}%(1j.*.)%(!.#.>:)%b%f%F{red}%B${SUFFIX}%b%f${NBSP}"
 
 # fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # zsh autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=250'
